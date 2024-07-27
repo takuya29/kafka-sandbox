@@ -3,6 +3,7 @@ package org.example.springconsumer
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.clients.consumer.ConsumerRecords
 import org.apache.kafka.common.serialization.StringDeserializer
+import org.example.common.KafkaTopics
 import org.example.common.PropertyUtils
 import org.slf4j.LoggerFactory
 import org.springframework.context.annotation.Bean
@@ -36,7 +37,7 @@ open class SpringConsumerConfig {
         return factory
     }
 
-    @KafkaListener(topics = [TOPIC])
+    @KafkaListener(topics = [KafkaTopics.KAFKA_SANDBOX])
     open fun listen(records: ConsumerRecords<String, String>) {
         val lastOffset =
             records.groupBy { it.partition() }
@@ -46,7 +47,6 @@ open class SpringConsumerConfig {
 
     companion object {
         private val LOG = LoggerFactory.getLogger(SpringConsumerApp::class.java)
-        private const val TOPIC = "consumer-test"
 
         private fun getConsumerProperties(): Properties {
             val properties =

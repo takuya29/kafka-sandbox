@@ -4,6 +4,7 @@ import org.apache.kafka.clients.producer.KafkaProducer
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.kafka.common.serialization.StringSerializer
+import org.example.common.KafkaTopics
 import org.example.common.PropertyUtils
 import org.slf4j.LoggerFactory
 import java.util.UUID
@@ -19,7 +20,7 @@ class ProducerApp {
             while (true) {
                 val uuid = UUID.randomUUID().toString()
                 try {
-                    kafkaProducer.send(ProducerRecord(TOPIC, uuid, uuid))
+                    kafkaProducer.send(ProducerRecord(KafkaTopics.KAFKA_SANDBOX, uuid, uuid))
                     LOG.info("Sent: $uuid")
                 } catch (e: Exception) {
                     LOG.error("Failed to send record", e)
@@ -31,7 +32,6 @@ class ProducerApp {
 
     companion object {
         private val LOG = LoggerFactory.getLogger(ProducerApp::class.java)
-        private const val TOPIC = "consumer-test"
     }
 }
 

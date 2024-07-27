@@ -2,6 +2,7 @@ This is a sample application to play with Kafka clients
 
 ### Preliminary
 - Go to https://confluent.cloud and create API key
+- Create "kafka-sandbox" topic if you haven't
 - Copy properties into `resources/client.properties` in each module
 
 ### Modules
@@ -12,7 +13,7 @@ This is a sample application to play with Kafka clients
 
 ### Commands
 ```
-# Apply Formatter % Linter
+# Apply formatter % linter
 ./gradlew spotlessApply
 
 # Run producer application

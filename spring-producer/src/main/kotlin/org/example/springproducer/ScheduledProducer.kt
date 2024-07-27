@@ -1,8 +1,8 @@
 package org.example.springproducer
 
 import org.apache.kafka.clients.producer.ProducerRecord
+import org.example.common.KafkaTopics
 import org.slf4j.LoggerFactory
-import org.springframework.context.annotation.Import
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.scheduling.annotation.EnableScheduling
 import org.springframework.scheduling.annotation.Scheduled
@@ -19,7 +19,7 @@ open class ScheduledProducer(
     open fun produce() {
         val uuid = UUID.randomUUID().toString()
         try {
-            kafkaTemplate.send(ProducerRecord(TOPIC, uuid, uuid))
+            kafkaTemplate.send(ProducerRecord(KafkaTopics.KAFKA_SANDBOX, uuid, uuid))
             LOG.info("Sent: $uuid")
         } catch (e: Exception) {
             LOG.error("Failed to send record", e)
@@ -28,6 +28,5 @@ open class ScheduledProducer(
 
     companion object {
         private val LOG = LoggerFactory.getLogger(ScheduledProducer::class.java)
-        private const val TOPIC = "consumer-test"
     }
 }

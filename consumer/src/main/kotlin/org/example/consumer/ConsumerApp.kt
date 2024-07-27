@@ -3,6 +3,7 @@ package org.example.consumer
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.serialization.StringDeserializer
+import org.example.common.KafkaTopics
 import org.example.common.PropertyUtils
 import org.slf4j.LoggerFactory
 import java.time.Duration
@@ -20,7 +21,7 @@ class ConsumerApp {
             }
 
         KafkaConsumer<String, String>(properties).use { kafkaConsumer ->
-            kafkaConsumer.subscribe(listOf(TOPIC))
+            kafkaConsumer.subscribe(listOf(KafkaTopics.KAFKA_SANDBOX))
 
             while (true) {
                 try {
@@ -41,7 +42,6 @@ class ConsumerApp {
     companion object {
         private val LOG = LoggerFactory.getLogger(ConsumerApp::class.java)
         private val TIMEOUT_DURATION = Duration.ofMillis(100)
-        private val TOPIC = "consumer-test"
     }
 }
 
