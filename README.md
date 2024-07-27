@@ -12,7 +12,18 @@ This is a sample application to play with Kafka clients
 
 ### Commands
 ```
+# Apply Formatter % Linter
+./gradlew spotlessApply
 
+# Run producer application
+./gradlew :producer:run
 
+# Run spring-producer application
+./gradlew :spring-producer:run
 
+# Run consumer application
+./gradlew :consumer:run
+
+# Run consumer-application:run
+./gradlew :spring-consumer:run
 ```

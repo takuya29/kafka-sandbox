@@ -20,7 +20,7 @@ dependencies {
 }
 
 application {
-    mainClassName = 'org.example.springconsumer.SpringProducerAppKt'
+    mainClassName = 'org.example.springproducer.SpringProducerAppKt'
 }
 
 spotless {

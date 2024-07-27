@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit
 
 @Component
 @EnableScheduling
-@Import(ScheduledProducer::class)
 open class ScheduledProducer(
     private val kafkaTemplate: KafkaTemplate<String, String>,
 ) {
