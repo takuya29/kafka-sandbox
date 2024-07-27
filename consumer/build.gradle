@@ -1,0 +1,26 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '2.0.0'
+    id 'application'
+    id 'com.diffplug.spotless' version '6.25.0'
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients
+    implementation 'org.apache.kafka:kafka-clients:3.7.1'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    implementation 'org.slf4j:slf4j-simple:2.0.13'
+
+    implementation project(":common")
+}
+
+application {
+    mainClassName = 'org.example.consumer.ConsumerAppKt'
+}
+
+spotless {
+    kotlin {
+        ktfmt()
+        ktlint()
+    }
+}

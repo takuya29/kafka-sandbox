@@ -1,5 +1,8 @@
-plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.5.0'
-}
 rootProject.name = 'kafka-sandbox'
+
+include 'common'
+include 'producer'
+include 'consumer'
+include 'spring-producer'
+include 'spring-consumer'
 
